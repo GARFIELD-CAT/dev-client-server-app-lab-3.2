@@ -99,6 +99,13 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>3.1.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>2021.0.3</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
     </dependencies>
 
 	<build>
@@ -139,17 +146,14 @@
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/openapi-data-service.yaml</inputSpec>
-                            <generatorName>spring</generatorName>
+                            <generatorName>java</generatorName>
                             <output>${project.build.directory}/generated-sources/openapi-data-service</output>
                             <apiPackage>ru.yagunov.data-service.api</apiPackage>
                             <modelPackage>ru.yagunov.data-service.model</modelPackage>
                             <configOptions>
+                                <library>feign</library>
                                 <interfaceOnly>true</interfaceOnly>
                                 <useJakartaEe>true</useJakartaEe>
-                                <dateLibrary>java8</dateLibrary>
-                                <useTags>true</useTags>
-                                <library>spring-boot</library>
-                                <generateSpringApplication>false</generateSpringApplication>
                             </configOptions>
                         </configuration>
                     </execution>
