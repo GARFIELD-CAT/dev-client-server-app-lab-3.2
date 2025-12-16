@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: UserEvent Writer API
+  version: 1.0.0
+paths:
+  /events:
+    post:
+      tags:
+        - UserEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserEvent'
+      responses:
+        '201':
+          description: "Событие успешно записано."
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    UserEvent:
+      type: object
+      properties:
+        eventType:
+          type: string
+        eventTime:
+          type: string
+          format: date-time

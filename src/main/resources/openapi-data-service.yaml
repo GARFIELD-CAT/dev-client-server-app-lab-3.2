@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: UserEvent Reader API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8083
+    description: Data Service
+
+paths:
+  /events:
+    get:
+      tags:
+        - UserEvent
+      responses:
+        '200':
+          description: "Список событий успешно возвращён."
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserEvent'
+components:
+  schemas:
+    UserEvent:
+      type: object
+      properties:
+        eventType:
+          type: string
+        eventTime:
+          type: string
+          format: date-time
